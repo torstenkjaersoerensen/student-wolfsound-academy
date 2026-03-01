@@ -18,6 +18,18 @@ CPMAddPackage(
         SOURCE_DIR ${LIB_DIR}/juce
 )
 
+CPMAddPackage(
+        NAME GOOGLETEST
+        GITHUB_REPOSITORY google/googletest
+        VERSION 1.17.0
+        SOURCE_DIR ${LIB_DIR}/googletest
+        OPTIONS
+            "INSTALL GTEST OFF"
+            "gtest_force_shart_crt ON"
+)
+
+enable_testing()
+
 if(MSVC)
     add_compile_options(/Wall /WX)
 else()
@@ -25,3 +37,4 @@ else()
 endif()
 
 add_subdirectory(bandpass_plugin)
+add_subdirectory(test)
